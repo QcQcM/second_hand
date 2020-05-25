@@ -21,7 +21,7 @@ namespace second_hand.UI
                 String phoneNum = Request["telephone_num"];
                 String userID = Request["user_id"];
                 String realName = name.Text.Trim();
-                String userSchool = school.Text.Trim();
+                String userSchool = Request["school"];
                 String userCollege = college.Text.Trim();
                 String userCampus = campus.Text.Trim();
                 String userPassword = password1.Text.Trim();

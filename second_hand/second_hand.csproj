@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="UI\register.aspx" />
+    <Content Include="UI\WebForm1.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -111,8 +112,22 @@
     <Compile Include="UI\register.aspx.designer.cs">
       <DependentUpon>register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UI\css\" />
+    <Folder Include="UI\hm.baidu.com\" />
+    <Folder Include="UI\image\" />
+    <Folder Include="UI\js\" />
+    <Folder Include="UI\Public\" />
+    <Folder Include="UI\Uploads\" />
+    <Folder Include="UI\v3.jiathis.com\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
