@@ -43,11 +43,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft Web Tools\Packages\AspNet.ScriptManager.jQuery.1.8.2\lib\net40\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.10.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\vs\Common7\IDE\PrivateAssemblies\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,6 +74,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="UI\AjaxUserIdCheck.ashx" />
+    <Content Include="UI\AjaxUserTelephoneCheck.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -79,13 +88,22 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Moder\Category.cs" />
-    <Compile Include="Moder\Chat.cs" />
-    <Compile Include="Moder\Collection.cs" />
-    <Compile Include="Moder\Comparison.cs" />
-    <Compile Include="Moder\Release.cs" />
-    <Compile Include="Moder\User.cs" />
+    <Compile Include="BLL\RegisterBLL.cs" />
+    <Compile Include="DAL\DatabaseTool.cs" />
+    <Compile Include="DAL\RegisterDAO.cs" />
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Chat.cs" />
+    <Compile Include="Model\Collection.cs" />
+    <Compile Include="Model\Comparison.cs" />
+    <Compile Include="Model\Release.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\AjaxUserIdCheck.ashx.cs">
+      <DependentUpon>AjaxUserIdCheck.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AjaxUserTelephoneCheck.ashx.cs">
+      <DependentUpon>AjaxUserTelephoneCheck.ashx</DependentUpon>
+    </Compile>
     <Compile Include="UI\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -94,10 +112,7 @@
       <DependentUpon>register.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\" />
-    <Folder Include="RLL\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
