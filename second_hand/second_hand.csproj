@@ -84,13 +84,28 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UI\home_logined.aspx" />
+    <Content Include="UI\login.aspx" />
+    <Content Include="UI\myGood.aspx" />
     <Content Include="UI\register.aspx" />
+    <Content Include="UI\release.aspx" />
+    <Content Include="UI\updateGood.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\homeLoginedBLL.cs" />
+    <Compile Include="BLL\LoginBLL.cs" />
+    <Compile Include="BLL\myGoodBLL.cs" />
     <Compile Include="BLL\RegisterBLL.cs" />
+    <Compile Include="BLL\ReleaseBLL.cs" />
+    <Compile Include="BLL\UpdateGoodBLL.cs" />
     <Compile Include="DAL\DatabaseTool.cs" />
+    <Compile Include="DAL\homeLoginedDAO.cs" />
+    <Compile Include="DAL\LoginDAO.cs" />
+    <Compile Include="DAL\MyGoodDAO.cs" />
     <Compile Include="DAL\RegisterDAO.cs" />
+    <Compile Include="DAL\ReleaseDAO.cs" />
+    <Compile Include="DAL\UpdateGoodDAO.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Chat.cs" />
     <Compile Include="Model\Collection.cs" />
@@ -104,12 +119,47 @@
     <Compile Include="UI\AjaxUserTelephoneCheck.ashx.cs">
       <DependentUpon>AjaxUserTelephoneCheck.ashx</DependentUpon>
     </Compile>
+    <Compile Include="UI\home_logined.aspx.cs">
+      <DependentUpon>home_logined.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\home_logined.aspx.designer.cs">
+      <DependentUpon>home_logined.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\myGood.aspx.cs">
+      <DependentUpon>myGood.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\myGood.aspx.designer.cs">
+      <DependentUpon>myGood.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UI\register.aspx.designer.cs">
       <DependentUpon>register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\release.aspx.cs">
+      <DependentUpon>release.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\release.aspx.designer.cs">
+      <DependentUpon>release.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\updateGood.aspx.cs">
+      <DependentUpon>updateGood.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\updateGood.aspx.designer.cs">
+      <DependentUpon>updateGood.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +170,7 @@
     <Folder Include="UI\Public\" />
     <Folder Include="UI\Uploads\" />
     <Folder Include="UI\v3.jiathis.com\" />
+    <Folder Include="upload_images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -7,6 +7,7 @@ namespace second_hand.Model
 {
     public class Release
     {
+        public static String imgSaveRoot = "";
         public int goodsID { set; get; }    //商品id（数据库自动递增）
         public String category { set; get; }        //商品所属类别
         public double prize { set; get; }   //价格
@@ -17,5 +18,28 @@ namespace second_hand.Model
         public String newLevel { set; get; }        //新旧程度
         public String userID { set; get; }      //用户id
         public String goodsName { set; get; }       //商品名称
+        public String address { set; get; }
+        public static Release createRelease(Dictionary<String, Object> dic)
+        {
+            Release release = new Release();
+            release.category = (String)dic["category"];
+            release.prize = (Double)dic["prize"];
+            release.bargin = (int)dic["bargin"];
+            try
+            {
+                release.contactInfo = (String)dic["contact_info"];
+            }
+           catch(InvalidCastException e)
+            {
+                release.contactInfo = "";
+            }
+            release.img = Release.imgSaveRoot+(String)dic["img"];
+            release.description = (String)dic["description"];
+            release.newLevel = (String)dic["new_level"];
+            release.userID = (String)dic["user_id"];
+            release.goodsName = (String)dic["goods_name"];
+            release.address = (String)dic["address"];
+            return release;
+        }
     }
 }

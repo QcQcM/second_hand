@@ -188,7 +188,7 @@
     <link rel="stylesheet" href="Public/Home/css/logreg/register.css" type="text/css" />
 
         <div class="main clearfix">
-            <div class="left ">
+            <div class="left">
                 <div class="top">注册</div>
                 <form action="/home/logreg/register" method="post" class="form-tips">
                     <div class="username item form-group">

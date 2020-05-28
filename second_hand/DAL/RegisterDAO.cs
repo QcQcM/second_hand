@@ -15,9 +15,9 @@ namespace second_hand.DAL
         public int insertUser(String phoneNum, String name, String school, String campus, String college, String password, String userID)
         {
             if (DatabaseTool.ExecSql(String.Format(insertSql,phoneNum,name,school,campus,college,password,userID)))
-                return -1;
-            else
                 return 1;
+            else
+                return -1;
         }
         public int selectUser(String value, String fieldName)
         {

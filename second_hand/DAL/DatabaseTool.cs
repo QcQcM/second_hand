@@ -37,5 +37,23 @@ namespace second_hand.DAL
                 return true;
 
         }
+        public static List<Dictionary<String, Object>> ExecSqlReturn(String sql) //返回查找结果集的
+        {
+            List<Dictionary<String, Object>> list = new List<Dictionary<String, Object>>();
+            MySqlCommand command = new MySqlCommand(sql, GetSqlConnection());
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Dictionary<string, Object> keyValues = new Dictionary<string, Object>();
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    keyValues.Add(reader.GetName(i), reader.GetFieldValue<Object>(i));
+                }
+                list.Add(keyValues);
+            }
+            reader.Close();
+            return list;
+        }
+
     }
 }
