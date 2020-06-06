@@ -10,6 +10,6 @@
 namespace second_hand.UI {
     
     
-    public partial class home {
+    public partial class home_unlogined {
     }
 }

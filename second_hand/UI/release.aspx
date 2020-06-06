@@ -181,12 +181,12 @@
         <a><div class="logo ring-hover"><img class="oniicon" src="Uploads/web/2016-03-03/图片2.png"></div></a>
         <div class="nav clearfix">
             <ul class="nav_list">
-                <a class="nav_link" href="/index/index">
+                <a class="nav_link" href="home_logined.aspx">
                     <li class="nav_item" name="fistpage" id="fistpage">
                         首页
                     </li>
                 </a>
-                <a class="nav_link " href="/sale/goods">
+                <a class="nav_link " href="home_logined.aspx">
                     <li class="nav_item" name="ershou" id="ershou">
                         二手物品
                     </li>
@@ -196,7 +196,6 @@
         <div class="logreg">
             <p class="right">
             <p class="loginin">
-                <a class="info badge-corner" href="/user/info">个人中心</a>                    <a class="line">|</a>
                 <a class="logout" href="/logreg/logout">退出</a>
             </p>
             </p>
@@ -242,13 +241,13 @@
                                     <input name="thumb" type="hidden" value="" id="thumbpic">
                                     <td width="50%" rowspan="8" class="out-pic-box">
                                         <div class="pre-pic" id="thumb">
-                                        </div>
-                                        <div  runat="server" >
+                                             <div  runat="server" >
                                          <%-- <asp:image id="imgFood" name="imgFood" runat="server" height="200px" width="170px"/>--%>
                                            <%-- <img height="200px" width="170px" name="good_img" id="good_img"/>--%>
                                             <asp:FileUpload ID="fileUpLoadPic" runat="server" onchange="showPic" />
                                            <label>请在上方选择商品照片</label>
                                             <%--<asp:Button ID="btnPicUpload" runat="server" Text="确认上传商品图片" OnClick="btnPicUpload_Click" CausesValidation="false" OnClientClick="return false" />--%>
+                                        </div>
                                         </div>
                                     </td>
                                 </tr>
@@ -290,6 +289,8 @@
                                                     <option value="饰品">饰品</option>
                                                     <option value="数码">数码</option>
                                                     <option value="箱包">箱包</option>
+                                                    <option value="生活用品">生活用品</option>
+                                                    <option value="学习资料">学习资料</option>
                                                     <option value="其他">其他</option>
                                                 </select>
                                             </div>

@@ -50,12 +50,31 @@
         function showPic() {
             document.getElementById("good_img").src = document.getElementById("<%= fileUpLoadPic.ClientID%>").PostedFile.FileName;
         }
+        function Search() {
+            var search_name = document.getElementById("keywords").value;
+            window.location = "home_logined.aspx?search_name=" + search_name;
+        }
     </script>
 </head>
 <body>
     <form runat="server">
     <!--右侧图标-->
     <style>
+        .dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
         li {
             list-style: none
         }
@@ -150,6 +169,7 @@
             line-height: 91px;
         }
     </style>
+
     <div id="rightButton">
         <ul id="right_ul">
             <li id="right_qq" class="right_ico" show="qq" hide="tel"></li>
@@ -177,39 +197,44 @@
     <![endif]-->
 
 
-    <link rel="stylesheet" href="Public/public/header.css" type="text/css" />
-    <div class="header header_change">
-        <a><div class="logo ring-hover"><img class="oniicon" src="Uploads/web/2016-03-03/图片2.png"></div></a>
-        <div class="nav clearfix">
-            <ul class="nav_list">
-                <a class="nav_link" href="/index/index">
-                    <li class="nav_item" name="fistpage" id="fistpage">
-                        首页
-                    </li>
-                </a>
-                <a class="nav_link " href="/sale/goods">
-                    <li class="nav_item" name="ershou" id="ershou">
-                        二手物品
-                    </li>
-                </a>
-            </ul>
-        </div>
-        <div class="logreg">
-            <p class="right">
-            <p class="loginin">
-                <a class="info badge-corner" href="/user/info">个人中心</a>                    <a class="line">|</a>
-                <a class="logout" href="/logreg/logout">退出</a>
-            </p>
-            </p>
-        </div>
-        <div class="searchbox">
-            <div>
-                <span class="icon-search serach-icon"></span>
-                <input name="keywords" id="serachWord" class="search" type="serach" placeholder="搜索你想要的商品" />            <div onclick="toSearch()" class="submit" value="搜索">搜索</div>
-            </div>
+  <link rel="stylesheet" href="Public/public/header.css" type="text/css" />
+<div class="header header_change">
+    <div class="nav clearfix">
+        <ul class="nav_list">
+            <a class="nav_link" href="home_logined.aspx">
+                <li class="nav_item">
+                    首页
+                </li>
+            </a>
+            <a class="nav_link " href="home_logined.aspx">
+                <li class="nav_item">
+                    二手物品
+                </li>
+            </a>
+            <div class="dropdown">
+            <span class="nav_link "> <li class="nav_item">个人中心</li></span>
+            <div class="dropdown-content">
+             <a href="myGood.aspx">
+                    我已发布
+            </a>
+            <a href="chatting.aspx">
+                    消息中心
+            </a>
+             <a href="myCollection.aspx">
+                    我的收藏
+            </a>
+  </div>
+</div>
+        </ul>
+    </div>
+    <div class="searchbox">
+        <div class="form">
+            <span class="icon-search serach-icon"></span>
+            <input name="keywords" id="keywords" class="search"  type="serach" placeholder="搜索你想要的商品"/>           
+             <div onclick="Search()" class="submit" value="搜索">搜索</div>
         </div>
     </div>
-
+</div>
 
 
 
@@ -245,7 +270,7 @@
                                             <div  runat="server" >
                                          <%-- <asp:image id="imgFood" name="imgFood" runat="server" height="200px" width="170px"/>--%>
                                            <%-- <img height="200px" width="170px" name="good_img" id="good_img"/>--%>
-                                             <label>您已上传商品图片，如需重新上传请重新选择图片</label>
+                                             <label>您已上传商品图片，如需重新上传请选择图片</label>
                                             <asp:FileUpload ID="fileUpLoadPic" runat="server" onchange="showPic" />
                                             <%--<asp:Button ID="btnPicUpload" runat="server" Text="确认上传商品图片" OnClick="btnPicUpload_Click" CausesValidation="false" OnClientClick="return false" />--%>
                                         </div>
@@ -283,13 +308,15 @@
                                     <td width="37%">
                                         <div class="username item form-group">
                                             <div class="field" runat="server">
-                                                <select class="input" name="type" id="type"  data-validate="required:分类不能为空！" runat="server"/>
+                                                <select class="input" name="type" id="type"  data-validate="required:分类不能为空！" runat="server">
                                                     <option value="">点击展开分类列表</option>
                                                     <option value="图书">图书</option>
                                                     <option value="美妆">美妆</option>
                                                     <option value="饰品">饰品</option>
                                                     <option value="数码">数码</option>
                                                     <option value="箱包">箱包</option>
+                                                    <option value="生活用品">生活用品</option>
+                                                    <option value="学习资料">学习资料</option>
                                                     <option value="其他">其他</option>
                                                 </select>
                                             </div>

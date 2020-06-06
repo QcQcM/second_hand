@@ -11,9 +11,7 @@ namespace second_hand.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //String goodsID = Request.QueryString["goods_id"].ToString();
-            //这句等蒋晓松的页面写完再取消注释
-            String goodsID = "3";
+            String goodsID = Request.QueryString["goods_id"].ToString();
             //传递过来要修改的商品id，先把信息从数据库里查出来显示出来
             BLL.UpdateGoodBLL ugb = new BLL.UpdateGoodBLL();
             List<Model.Release> lst = new List<Model.Release>();
@@ -22,8 +20,8 @@ namespace second_hand.UI
             price.Value = lst[0].prize.ToString();
             address.Value = lst[0].address;
             //这句这样指定有些问题，需要再改一下
-            //type.Value = lst[0].category;
-            if(lst[0].bargin == 1)
+            type.Value = lst[0].category;
+            if (lst[0].bargin == 1)
             {
                 //接收议价
                 RadioButton1.Checked = true;
@@ -41,7 +39,6 @@ namespace second_hand.UI
         public void SaveFile(HttpPostedFile file)
         {
             string savePath = Server.MapPath(".") + "//Uploads//";
-            Model.Release.imgSaveRoot = savePath;
             string fileName = fileUpLoadPic.FileName;
             string pathToCheck = savePath + fileName;
             string tempfilename = "";
@@ -57,6 +54,9 @@ namespace second_hand.UI
                 }
                 fileName = tempfilename;
                 Response.Write("<script>alert('你上传了两个相同文件！')</script>");
+            }else
+            {
+                release.count = 0;
             }
             savePath += fileName;
             fileUpLoadPic.SaveAs(savePath);
@@ -100,7 +100,8 @@ namespace second_hand.UI
                     }
                     Double prize = Convert.ToDouble(Request["price"]);
                     String address = Request["address"];
-                    String category = Request["type"];
+                    //select控件获取的文字自带一个空格，需要去空格
+                    String category = Request["type"].ToString().Trim();
                     int bargin;
                     if (RadioButton1.Checked)
                         bargin = 1;

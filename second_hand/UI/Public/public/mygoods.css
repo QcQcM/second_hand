@@ -1,0 +1,108 @@
+﻿a, address, b, big, blockquote, body, center, cite, code, dd, del, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, label, legend, li, ol, p, pre, small, span, strong, u, ul, var {
+    margin: 0;
+    margin-right: 0px;
+    padding: 0;
+}
+.g-main2 .m-list {
+    float: right;
+    width: 100%;
+}
+
+    .g-main2 .m-list .ml-wrap {
+        position: relative;
+        margin-left: 190px;
+        padding-bottom: 30px;
+    }
+
+.goods-list-v2 {
+    margin-bottom: 20px;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    _zoom: 1;
+}
+
+    .goods-list-v2 .gl-warp {
+        width: 1200px;
+    }
+
+    .goods-list-v2 .gl-warp {
+        width: 840px;
+        height: auto;
+        margin-right: -40px;
+    }
+
+ol, ul {
+    list-style: none;
+}
+
+.goods-list-v2 .gl-item {
+    margin-right: 0;
+}
+
+.goods-list-v2 .gl-item {
+    width: 240px;
+    height: 474px;
+    float: left;
+    position: relative;
+    z-index: 1;
+    _display: inline-block;
+    margin-right: 40px;
+    margin-top: 10px;
+}
+
+    .goods-list-v2 .gl-item .gl-i-wrap {
+        width: 220px;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        background: #fff;
+        border: 1px solid #fff;
+        padding: 38px 9px 10px;
+        transition: border-color .1s ease;
+    }
+
+    .goods-list-v2 .gl-item .p-img {
+        height: 220px;
+        padding: 0;
+        margin-bottom: 15px;
+        position: relative;
+    }
+
+    .goods-list-v2 .gl-item .p-price {
+        position: relative;
+        line-height: 22px;
+        height: 22px;
+        overflow: hidden;
+        width: 100%;
+        margin: 0 0 8px;
+    }
+
+    .goods-list-v2 .gl-item .p-name {
+        height: 40px;
+        margin-bottom: 8px;
+        overflow: hidden;
+    }
+
+    .goods-list-v2 .gl-item .p-price strong {
+        float: left;
+        margin-right: 10px;
+        color: #e4393c;
+        font-size: 20px;
+    }
+    .goods-list-v2 .gl-item .p-operate {
+        overflow: hidden;
+        *zoom: 1;
+        margin-bottom: 10px;
+    }
+        .goods-list-v2 .gl-item .p-operate .p-o-btn {
+            float: left;
+            height: 25px;
+            line-height: 25px;
+            border: 1px solid #DDD;
+            padding: 0 3px 0 6px;
+            position: relative;
+            background: #fff;
+            color: #999;
+        }

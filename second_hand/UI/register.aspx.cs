@@ -18,10 +18,10 @@ namespace second_hand.UI
         {
             if (Page.IsValid == true)
             {
-                String phoneNum = Request["telephone_num"];
-                String userID = Request["user_id"];
+                String phoneNum = Request["telephone_num"].ToString().Trim();
+                String userID = Request["user_id"].ToString().Trim();
                 String realName = name.Text.Trim();
-                String userSchool = Request["school"];
+                String userSchool = Request["school"].ToString().Trim();
                 String userCollege = college.Text.Trim();
                 String userCampus = campus.Text.Trim();
                 String userPassword = password1.Text.Trim();
@@ -39,6 +39,8 @@ namespace second_hand.UI
                 }  else if (rstb.userRegister(phoneNum, realName, userSchool, userCampus, userCollege, userPassword, userID) != -1)
                 {
                     Response.Write("<script language=javascript>window.alert('注册成功！');</script>");
+                    Session["user_id"] = userID;
+                    Response.Redirect("home_logined.aspx");
                 }
                 else
                 {

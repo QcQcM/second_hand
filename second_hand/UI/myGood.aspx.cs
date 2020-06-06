@@ -9,10 +9,11 @@ namespace second_hand.UI
 {
     public partial class myGood : System.Web.UI.Page
     {
+        public List<Model.Release> list = new List<Model.Release>();
         protected void Page_Load(object sender, EventArgs e)
         {
             BLL.myGoodBLL mgb = new BLL.myGoodBLL();
-            if (IsPostBack)
+            if (Request.QueryString["delete_id"]!=null)
             {
                 //如果页面不是首次加载，说明传递了要删除的商品id
                 String deleteGoodID = Request.QueryString["delete_id"];
@@ -27,8 +28,7 @@ namespace second_hand.UI
             }
             //页面加载时从数据库检索出该用户已发布的商品信息
             String userID = Session["user_id"].ToString();
-            List<Model.Release> lst = new List<Model.Release>();
-            lst = mgb.selectMyGood(userID);
+            list = mgb.selectMyGood(userID);
         }
     }
 }

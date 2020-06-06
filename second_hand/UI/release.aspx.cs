@@ -12,13 +12,15 @@ namespace second_hand.UI
         public static int count = 1;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //暂时指定，之后记得去掉
-            Session["user_id"] = "受热会膨胀";
+            if(Session["user_id"] == null)
+            {
+                Response.Write("<script>alert('需要登录才能发布商品！')</script>");
+                Response.Redirect("home_unlogined.aspx");
+            }
         }
             public void SaveFile(HttpPostedFile file)
         {
             string savePath = Server.MapPath(".")+"//Uploads//";
-            Model.Release.imgSaveRoot = savePath;
             string fileName = fileUpLoadPic.FileName;
             string pathToCheck = savePath + fileName;
             string tempfilename = "";
@@ -34,6 +36,9 @@ namespace second_hand.UI
                 }
                 fileName = tempfilename;
                 Response.Write("<script>alert('你上传了两个相同文件！')</script>");
+            }else
+            {
+                release.count = 0;
             }
             savePath += fileName;
             fileUpLoadPic.SaveAs(savePath);
@@ -59,7 +64,7 @@ namespace second_hand.UI
                 string filename = filepath.Substring(filepath.LastIndexOf("\\") + 1);//第一个\转义字符
                 Session["filename"] = filename;
                 string fileEx = filepath.Substring(filepath.LastIndexOf(".") + 1);//从.开始截至最后得到图片格式.jpg。。。
-                string serverpath = Server.MapPath(".") + "//Uploads//" + filename;
+                string serverpath = Server.MapPath(".") + "//Uploads//";
                 if (fileEx == "jpg" || fileEx == "bmp" || fileEx == "gif")
                 {
                     //如果图片格式都正确，将页面所有内容存入数据库
@@ -67,15 +72,15 @@ namespace second_hand.UI
                     String goodImg;
                     if (release.count > 1)
                     {
-                        goodImg = release.count.ToString() + filename;
+                        goodImg = "Uploads/"+ release.count.ToString() + filename;
                     }
                     else
                     {
-                        goodImg = filename;
+                        goodImg = "Uploads/" + filename;
                     }
                     Double price = Convert.ToDouble(Request["price"]);
                     String address = Request["address"];
-                    String category = Request["type"];
+                    String category = Request["type"].ToString().Trim();
                     int bargin;
                     if (RadioButton1.Checked)
                         bargin = 1;

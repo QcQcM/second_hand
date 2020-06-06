@@ -31,6 +31,11 @@
     <script src="Public/public/uploadfile.js"></script>
     <script src="./js/info.js"></script>
     <script type="text/javascript" src="Public/public/jquery.lazyload.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
     <script type="text/javascript">
         ThinkPHP = window.Think = {
             "ROOT": "",
@@ -112,6 +117,27 @@
         }
       </script>
     <script>
+        function test() {
+            var result = document.getElementById("codeResult");
+            result.textContent = "验证码正确";
+            result.style.display = "";
+        }
+        function test1() {
+            var result = document.getElementById("send_Code");
+            result.textContent = "发送验证码";
+            result.style.display = "";
+        }
+        function checkCode() {
+            setTimeout(test, 3000);
+        }
+        function sendCode() {
+            var result = document.getElementById("send_Code");
+            result.value = "验证码已发送，60秒后可重发";
+            setTimeout(test1, 60000);
+            result.value = "重新发送验证码";
+        }
+    </script>
+    <script>
         /*百度统计代码*/
         var _hmt = _hmt || [];
         (function () {
@@ -191,6 +217,7 @@
             <div class="left">
                 <div class="top">注册</div>
                 <form action="/home/logreg/register" method="post" class="form-tips">
+                    <div style="max-height:500px;overflow-x:hidden;overflow-y:scroll;">
                     <div class="username item form-group">
                         <div class="field">
                             <label for="name">手机号</label>
@@ -198,6 +225,16 @@
                         </div>
                     </div>
                      <div class="form-button reg"><label id="showResult1" name="showResult1"/></div>
+                    <div class="form-button reg">
+                            <button id="send_code" name="send_code" onclick="sendCode()" type="button" class="btn btn-default">发送验证码</button>
+                        </div>
+                    <div class="username item form-group">
+                     <div class="field">
+                            <label for="name">请输入短信验证码</label>
+                            <input name="code" id="code" type="text" placeholder="请输入收到的验证码" onblur="checkCode()" />                     
+                        </div>
+                    </div>
+                     <div class="form-button reg"><label id="codeResult" name="codeResult" style="display:none;"/></div>
                      <div class="username item form-group">
                         <div class="field">
                            <label for="phone_num">用户名</label>
@@ -264,6 +301,7 @@
                               <div class="form-button reg">
                           <asp:CompareValidator ID="password_confirm" ControlToValidate="password2" ControlToCompare="password1" Display="Static" ErrorMessage="两次密码输入不相同" ForeColor="Red" runat="server" />
                        </div>
+                              </div>
                                    </div>
                     </div>
 
@@ -370,5 +408,12 @@
             };
         </script>
     </form>
+    <div style="clear: both"></div>
+    <script src="Public/Home/js/logreg/login.js"></script>
+    <link rel="stylesheet" href="Public/public/footer.css" type="text/css" />
+    <div class="footer">
+    <div class="footerNav">
+        <ul class="fn">  
+        </ul> 
 </body>
 </html>

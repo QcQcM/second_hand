@@ -26,5 +26,15 @@ namespace second_hand.BLL
             List<Model.Release> lst = rd.selectGoodsRandom();
             return lst;
         }
+        public int insertColl(String userID, String goodID)
+        {
+            DAL.homeLoginedDAO rd = new DAL.homeLoginedDAO();
+            return rd.insertColl(userID, goodID);
+        }
+        public bool searchNotRead(String userID)
+        {
+            DAL.homeLoginedDAO rd = new DAL.homeLoginedDAO();
+            return rd.searchNotRead(userID);
+        }
     }
 }

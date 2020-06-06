@@ -209,8 +209,10 @@ html, body, div, header, footer, form, p, input, button, h1, h2, h3, h4, h5, h6,
     font-size: 12px;
     height: 20px;
     line-height: 20px;
+    word-break: break-all;
+    word-wrap: break-word;
     overflow: hidden;
-    width: 65%;
+    white-space: normal; 
 }
 
 .class-item .some .renzheng {

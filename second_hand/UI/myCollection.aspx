@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="second_hand.UI.login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="myCollection.aspx.cs" Inherits="second_hand.UI.myCollection" %>
 
 <!DOCTYPE html>
 
@@ -13,7 +13,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
-    <title>登录</title>
+    <title>我的收藏</title>
     <link type="text/css" href="Public/plugins/pintuer/pintuer.css" rel="stylesheet" />
     <link type="text/css" rel="stylesheet" href="Public/public/init.css">
     <link rel="stylesheet" href="Public/Fonts/goodsdis/iconfont.css" type="text/css" />
@@ -30,6 +30,25 @@
     <script src="Public/public/thumbupload.js"></script>
     <script src="Public/public/uploadfile.js"></script>
     <script type="text/javascript" src="Public/public/jquery.lazyload.js"></script>
+    <script src="jquery.min.js"></script>
+    <style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+
     <script type="text/javascript">
         ThinkPHP = window.Think = {
             "ROOT"   : "",
@@ -41,21 +60,11 @@
         }
 
     </script>
-    <script>
-        /*百度统计代码*/
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?631792055f974af19205e0193b81fcb4";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
 
     <script src="Public/public/think.js"></script>
 </head>
 <body>
-
+<form runat="server">
 <!--右侧图标-->
 <style>
     li{ list-style:none}
@@ -80,11 +89,11 @@
         <li id="right_tel" class="right_ico" show="tel" hide="qq"></li>
         <li id="right_tip" class="png">
             <p class="flagShow_p1 flag_tel">电话联系</p>
-            <p class="flagShow_p2 flag_tel line91">13821233156</p>
+            <p class="flagShow_p2 flag_tel line91">111111111111</p>
             <p class="flagShow_p1 flag_qq">QQ联系</p>
             <p class="flagShow_p2 flag_qq">
-                <a href="tencent://message/?uin=1913045515&Site=QQ交谈&Menu=yes" target="_blank">
-                    <img border="0" src="Public/plugins/helpfixed/images/qiyeQQ.png"></a> <span>QQ:924729183</span> </p>
+                <a href="tencent://message/?uin=307242951&Site=QQ交谈&Menu=yes" target="_blank">
+                    <img border="0" src="Public/plugins/helpfixed/images/qiyeQQ.png"></a> <span>QQ:1111111111</span> </p>
         </li>
     </ul>
 </div>
@@ -147,55 +156,155 @@
 </script>
 <![endif]-->
 
-<link rel="stylesheet" href="Public/Home/css/logreg/login.css" type="text/css" />
- <form runat="server">
-<div class="main clearfix">
-    <div class="left ">
-        <div class="top">登录</div>
-            <div class="username item form-group">
-                <div class="field">
-                    <label for="name">帐号</label>
-                    <input name="user_id" value="" class="name" type="text" id="user_id" placeholder="请输入用户名">
-                </div>
+
+<link rel="stylesheet" href="Public/public/header.css" type="text/css" />
+<div class="header header_change">
+    <div class="nav clearfix">
+        <ul class="nav_list">
+            <a class="nav_link" href="home_logined.aspx">
+                <li class="nav_item">
+                    首页
+                </li>
+            </a>
+            <a class="nav_link " href="home_logined.aspx">
+                <li class="nav_item">
+                    二手物品
+                </li>
+            </a>
+            <div class="dropdown">
+            <span class="nav_link "> <li class="nav_item">个人中心</li></span>
+            <div class="dropdown-content">
+             <a href="myGood.aspx">
+                    我已发布
+            </a>
+            <a href="chatting.aspx">
+                    消息中心
+            </a>
+             <a href="myCollection.aspx">
+                    我的收藏
+            </a>
+  </div>
+</div>
+        </ul>
+    </div>
+    <div class="searchbox">
+        <div class="form">
+            <span class="icon-search serach-icon"></span>
+            <input name="keywords" id="keywords" class="search"  type="serach" placeholder="搜索你想要的商品"/>           
+             <div onclick="Search()" class="submit" value="搜索">搜索</div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('.item'+"").css('box-shadow','0 0 7px rgba(0,0,0,0.5) inset');
+</script>
+<!--引入layer.js文件-->
+
+
+
+<link rel="stylesheet" href="Public/Home/css/sale/goods.css" type="text/css" />
+<style type="text/css">
+    *{margin:0;padding:0;list-style:none;}
+    body{background:#fff;font:normal 12px/22px 宋体;width:100%;}
+    img{border:0;}
+    a{text-decoration:none;color:#333;}
+    a:hover{color:#1974A1;}
+    /* fullSlide */
+    .fullSlide{width:100%;position:relative;height:300px;background:#000;}
+    .fullSlide .bd{margin:0 auto;position:relative;z-index:0;overflow:hidden;}
+    .fullSlide .bd ul{width:100% !important;}
+    .fullSlide .bd li{background-size:100% 100%!important;width:100% !important;height:300px;overflow:hidden;text-align:center;}
+    .fullSlide .bd li a{display:block;height:300px;}
+    .fullSlide .hd{width:100%;position:absolute;z-index:1;bottom:0;left:0;height:30px;line-height:30px;}
+    .fullSlide .hd ul{text-align:center;}
+    .fullSlide .hd ul li{cursor:pointer;display:inline-block;*display:inline;zoom:1;width:42px;height:11px;margin:1px;overflow:hidden;background:#000;filter:alpha(opacity=50);opacity:0.5;line-height:999px;}
+    .fullSlide .hd ul .on{background:#f00;}
+    .fullSlide .prev,.fullSlide .next{display:block;position:absolute;z-index:1;top:50%;margin-top:-30px;left:15%;z-index:1;width:40px;height:60px;background:url(Public/plugins/Carousel-Ad/images/slider-arrow.png) -126px -137px #000 no-repeat;cursor:pointer;filter:alpha(opacity=50);opacity:0.5;display:none;}
+    .fullSlide .next{left:auto;right:15%;background-position:-6px -137px;}
+</style>
+<input type="hidden" name="order" value="">
+<input type="hidden" name="keyWord" value="">
+<input type="hidden" name="type" value="">
+<div class="wrap" id="theTop">
+    <div class="main clearfix">
+      
+
+
+
+ <div class="item-list">
+    <ul class="goodsbox clearfix recommend-class-list row">
+<% foreach(var item in lst)
+	{%>
+        <li class="items clearfix">
+         <div class="col-md-3 col-sm-6">
+                        <div class="class-item">
+                            <div class="class-bg-layer"></div>
+                            <div class="class-item-bg">
+		    <img src=<%=item.img%> width="170" height="170"  class="img-responsive lazyload">
+                                
+             <div class="pricehot clearfix">
+             <span class="price">￥&nbsp;<span><%=item.prize%></span></span>
+             <span class="hot">&nbsp;<span><%=item.goodsName%></span></span>
+             </div>     
+                                
+             <a target="_blank" href="" class="title"><span class="school">卖家ID：<%=item.userID%></span></a>          
+                        
+            <div class="some  clearfix">
+                <span class="school">商品描述：<%=item.description%></span>
+           </div>
+
+            <div class="some  clearfix">
+                <span class="school">卖家联系方式：<%=item.contactInfo%></span>
+           </div>
+
+           <div class="some  clearfix">
+                <span class="school">是否接受议价：<%if(item.bargin==1){%>是<%}else{%>否<%}%></span>
+           </div>
+
+
+            <div class="some  clearfix">
+                <span class="school">交易地点：<%=item.address%></span>
+           </div>
+
+
+             </div>
+        </div>
+        </div>
+        
+        <%}%>
+        </ul>
             </div>
-            <div class="psssword item form-group">
-                <div class="field">
-                    <label for="pass">密码</label>
-                    <input class="name" type="password" id="password" placeholder="请输入密码" name="password">
-                </div>
-            </div>
-            <div class="reg">
-                <asp:Button runat="server" ID="login_button" Text="马上登录" CssClass="reg_btn" OnClick="login_button_Click" />
-            </div>
-            <div class="other login">
-                <div class="longlogin">
-                    <input class="longlogin" name="longlogin" value="1" type="checkbox" checked="checked">
-                    <label>记住我的登录状态</label>&nbsp&nbsp
-                    <label id="flagShow" style="color:#CC0000"></label>
-                </div>
-                <div>
-                    <span class="has">如果您还没有账号？</span><a href="register.aspx">点击这里马上注册</a>
-                </div>
+
+                <div class="pager">
+                    <div></div>            </div>
             </div>
     </div>
-</form>
 </div>
-<div style="clear: both"></div>
-<script src="Public/Home/js/logreg/login.js"></script>
-    <link rel="stylesheet" href="Public/public/footer.css" type="text/css" />
-    <div class="footer">
+
+<script type="text/javascript">
+    var querySaleUrl = "/sale/querysale";
+    /*轮播图片配置*/
+</script>
+<script src="Public/Home/js/sale/goods.js"></script>
+<link rel="stylesheet" href="Public/public/footer.css" type="text/css" />
+<div class="footer">
     <div class="footerNav">
         <ul class="fn">
-            <li><span class="fnIco"></span><a href="#">关于我们</a></li>
-            <li><span class="fnIco"></span><a href="#">加入我们</a></li>
-            <li><span class="fnIco"></span><a href="#">校内二手</a></li>
+            <li><span class="fnIco"></span><a href="/other/contact">关于我们</a></li>
+            <li><span class="fnIco"></span><a href="/other/joinus">加入我们</a></li>
+            <li><span class="fnIco"></span><a href="/sale/goods">校内二手</a></li>
+            <li><span class="fnIco"></span><a href="/buy/index">校内求购</a></li>
+            <!-- <li><span class="fnIco"></span><a href="/shop/index">柚子商城</a></li> -->
+            <li><span class="fnIco"></span><a href="/logreg/login">我要登录</a></li>
+            <li><span class="fnIco"></span><a href="/logreg/register">我要注册</a></li>
         </ul>
     </div>
     <div class="footerMain">
         <div class="fContact">
             <h3 class="fct">联系我们 / <span>contact us</span></h3>
-            <p>Q群：709094762</p>
-            <p>Q Q：1291682947</p>
+            <p>Q群：11111111111</p>
+            <p>Q Q：11111111111</p>
             <p>地址：河北工业大学北辰校区</p>
         </div>
         <div class="fCall">
@@ -206,4 +315,7 @@
             <a class="fwx tips" data-toggle="hover" data-place="top" data-image="Uploads/web/2016-03-03/56d792395ebe9.png">微信二维码</a>
         </div>
 </div>
+</div>
+</form>
 </body>
+</html>

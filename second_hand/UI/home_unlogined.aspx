@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="home_logined.aspx.cs" Inherits="second_hand.UI.home" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="home_unlogined.aspx.cs" Inherits="second_hand.UI.home_unlogined" %>
 
 <!DOCTYPE html>
 
@@ -30,10 +30,6 @@
     <script src="Public/public/thumbupload.js"></script>
     <script src="Public/public/uploadfile.js"></script>
     <script type="text/javascript" src="Public/public/jquery.lazyload.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
     <script src="jquery.min.js"></script>
     <script type="text/javascript">
         ThinkPHP = window.Think = {
@@ -69,47 +65,17 @@
     a.backToTop_a:active{  background:url(Public/plugins/helpfixed/images/7_11.png) no-repeat; }
     .line91{ line-height:91px; }
 </style>
-<style>
-.redpoint{
-    display:block;
-    background:#f00;
-    border-radius:50%;
-    width:5px;
-    height:5px;
-    top:0px;
-    right:0px;
-    position:absolute;
-}
-.whitepoint{
-    display:none;
-}
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
-}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-</style>
 <div id="rightButton">
     <ul id="right_ul">
         <li id="right_qq" class="right_ico" show="qq" hide="tel"></li>
         <li id="right_tel" class="right_ico" show="tel" hide="qq"></li>
         <li id="right_tip" class="png">
             <p class="flagShow_p1 flag_tel">电话联系</p>
-            <p class="flagShow_p2 flag_tel line91">13132058857</p>
+            <p class="flagShow_p2 flag_tel line91">111111111111</p>
             <p class="flagShow_p1 flag_qq">QQ联系</p>
             <p class="flagShow_p2 flag_qq">
                 <a href="tencent://message/?uin=307242951&Site=QQ交谈&Menu=yes" target="_blank">
-                    <img border="0" src="Public/plugins/helpfixed/images/qiyeQQ.png"></a> <span>QQ:708805642</span> </p>
+                    <img border="0" src="Public/plugins/helpfixed/images/qiyeQQ.png"></a> <span>QQ:1111111111</span> </p>
         </li>
     </ul>
 </div>
@@ -119,7 +85,13 @@
 <script type="text/javascript">
     function Search() {
         var search_name = document.getElementById("keywords").value;
-        window.location = "home_logined.aspx?search_name=" + search_name;
+        window.location = "home_unlogined.aspx?search_name=" + search_name;
+    }
+    function Release() {
+        alert('需要先登录才能发布商品！');
+    }
+    function Chat() {
+        alert('需要先登录才能联系卖家！');
     }
     $(document).ready(function(e) {
         $("#rightButton").css("right", "0px");
@@ -191,38 +163,20 @@
                     二手物品
                 </li>
             </a>
-            <div class="dropdown">
-            <span class="nav_link "> <li class="nav_item">个人中心</li></span>
-            <div class="dropdown-content">
-             <a href="myGood.aspx">
-                    我已发布
-            </a>
-            <a href="chatting.aspx">
-                <span style="position:relative">
-                    消息中心
-                <% if (notRead)
-                    { %>
-                    <i class="redpoint"></i>
-                    <%}
-    else
-    { %>
-                     <i class="whitepoint"></i>
-                    <%} %>
-                </span>
-            </a>
-            <a href="myCollection.aspx">
-                    我的收藏
-            </a>
-  </div>
-</div>
         </ul>
     </div>
+
     <div class="searchbox">
         <div class="form">
             <span class="icon-search serach-icon"></span>
             <input name="keywords" id="keywords" class="search"  type="serach" placeholder="搜索你想要的商品"/>           
              <div onclick="Search()" class="submit" value="搜索">搜索</div>
         </div>
+    </div>
+    <div class="logreg">
+        <p class="right">
+            <a href="login.aspx">登录</a><a class="line">|</a>
+            <a href="register.aspx">注册</a>        </p>
     </div>
 </div>
 
@@ -232,61 +186,62 @@
 <link rel="stylesheet" href="Public/Fonts/items/iconfont.css" type="text/css" />
 <nav class="item clearfix">
     <ul>
-        <a href="home_logined.aspx">
+
+       <a href="home_unlogined.aspx">
             <li class="daibu item0">
                 <span class="icon iconfontitems">&#xe697;</span>
                 <span class="text">分类</span>
             </li>
         </a>
-        <a href="home_logined.aspx">
+        <a href="home_unlogined.aspx">
             <li class="qita item11">
                 <span class="icon iconfontitems">&#xe631;</span>
                 <span class="text">查看全部</span>
             </li>
         </a>
-        <a href="home_logined.aspx?search_category=图书">
+        <a href="home_unlogined.aspx?search_category=图书">
             <li class="daibu item1">
                 <span class="icon iconfontitems">&#xe60f;</span>
                 <span class="text">图书</span>
             </li>
         </a>
-        <a a href="home_logined.aspx?search_category=美妆">
+        <a a href="home_unlogined.aspx?search_category=美妆">
             <li class="shouji item2">
                 <span class="icon iconfontitems">&#xe666;</span>
                 <span class="text">美妆</span>
             </li>
         </a>
-        <a a href="home_logined.aspx?search_category=饰品">
+        <a a href="home_unlogined.aspx?search_category=饰品">
             <li class="diannao item3">
                 <span class="icon iconfontitems">&#xe605;</span>
                 <span class="text">饰品</span>
             </li>
         </a>
-        <a a href="home_logined.aspx?search_category=数码">
+        <a a href="home_unlogined.aspx?search_category=数码">
             <li class="shuma  item4">
                 <span class="icon iconfontitems">&#xe602;</span>
                 <span class="text">数码</span>
             </li>
         </a>
-        <a href="home_logined.aspx?search_category=箱包">
+        <a href="home_unlogined.aspx?search_category=箱包">
             <li class="dianqi item5">
                 <span class="icon iconfontitems">&#xe617;</span>
                 <span class="text">箱包</span>
             </li>
         </a>
-        <a href="home_logined.aspx?search_category=生活用品">
+        <a href="home_unlogined.aspx?search_category=生活用品">
             <li class="qita item11">
                 <span class="icon iconfontitems">&#xe600;</span>
                 <span class="text">生活用品</span>
             </li>
         </a>
-        <a href="home_logined.aspx?search_category=学习资料">
+        <a href="home_unlogined.aspx?search_category=学习资料">
             <li class="qita item11">
                 <span class="icon iconfontitems">&#xe60a;</span>
                 <span class="text">学习资料</span>
             </li>
         </a>
-        <a href="home_logined.aspx?search_category=其他">
+        <a href="home_unlogined.aspx?search_category=其他">
             <li class="qita item11">
                 <span class="icon iconfontitems">&#xe631;</span>
                 <span class="text">其他</span>
@@ -302,12 +257,11 @@
 <div class="sidebar">
     <div class="btn block">
         <div class="ershou">
-            <a href="release.aspx">发布二手</a>
+            <a href="#" onclick="Release()">发布二手</a>
         </div>
     </div>
 </div>
 <!--引入layer.js文件-->
-
 
 
 <link rel="stylesheet" href="Public/Home/css/sale/goods.css" type="text/css" />
@@ -370,12 +324,12 @@
              <span class="hot">&nbsp;<span><%=item.goodsName%></span></span>
              </div>     
                                 
-             <a  href="chatting.aspx?chat_id=<%= item.userID %>" class="title"><span class="school">卖家ID：<%=item.userID%></span></a>          
+             <a target="_blank" href="#" onclick="Chat()" class="title"><span class="school">卖家ID：<%=item.userID%></span></a>          
                         
             <div class="some  clearfix">
                 <span class="school">商品描述：<%=item.description%></span>
            </div>
-            <div class="some  clearfix">
+           <div class="some  clearfix">
                 <span class="school">新旧程度：<%=item.newLevel%></span>
            </div>
             <div class="some  clearfix">
@@ -390,9 +344,7 @@
             <div class="some  clearfix">
                 <span class="school">交易地点：<%=item.address%></span>
            </div>
-             <div class="some  clearfix">
-                 <a href="home_logined.aspx?save_good=<%= item.goodsID %>"><span class="school">加入收藏</span></a>
-             </div>
+
 
              </div>
         </div>
@@ -417,9 +369,13 @@
 <div class="footer">
     <div class="footerNav">
         <ul class="fn">
-            <li><span class="fnIco"></span><a href="#">关于我们</a></li>
-            <li><span class="fnIco"></span><a href="#">加入我们</a></li>
-            <li><span class="fnIco"></span><a href="#">校内二手</a></li>
+            <li><span class="fnIco"></span><a href="/other/contact">关于我们</a></li>
+            <li><span class="fnIco"></span><a href="/other/joinus">加入我们</a></li>
+            <li><span class="fnIco"></span><a href="/sale/goods">校内二手</a></li>
+            <li><span class="fnIco"></span><a href="/buy/index">校内求购</a></li>
+            <!-- <li><span class="fnIco"></span><a href="/shop/index">柚子商城</a></li> -->
+            <li><span class="fnIco"></span><a href="/logreg/login">我要登录</a></li>
+            <li><span class="fnIco"></span><a href="/logreg/register">我要注册</a></li>
         </ul>
     </div>
     <div class="footerMain">
