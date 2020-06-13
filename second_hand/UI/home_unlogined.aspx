@@ -324,7 +324,7 @@
              <span class="hot">&nbsp;<span><%=item.goodsName%></span></span>
              </div>     
                                 
-             <a target="_blank" href="#" onclick="Chat()" class="title"><span class="school">卖家ID：<%=item.userID%></span></a>          
+             <a  href="#" onclick="Chat()" class="title"><span class="school">卖家ID：<%=item.userID%></span></a>          
                         
             <div class="some  clearfix">
                 <span class="school">商品描述：<%=item.description%></span>

@@ -21,6 +21,20 @@ namespace second_hand.BLL
             }
 
         }
+        public int updateGoodNotPic(String category, Double prize, int bargin, String contact, String description, String new_level, String goodsName, String address, String goodsID)
+        {
+            int goodID = Convert.ToInt32(goodsID);
+            DAL.UpdateGoodDAO ugd = new DAL.UpdateGoodDAO();
+            if (ugd.updateGoodNotPic(category, prize, bargin, contact,description, new_level, goodsName, address, goodID) == -1)
+            {
+                return -1;
+            }
+            else
+            {
+                return 1;
+            }
+
+        }
         public List<Model.Release> selectGoodsByGoodID(String goodsID)
         {
             DAL.UpdateGoodDAO ugd = new DAL.UpdateGoodDAO();

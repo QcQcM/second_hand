@@ -67,16 +67,6 @@ namespace second_hand.UI
             if (fileUpLoadPic.HasFile) //文件存在
             {
                 SaveFile(fileUpLoadPic.PostedFile);//保存上传文件
-            }
-            else
-            {
-                Response.Write("<script>alert('上传文件不存在！')</script>");
-            }
-            if (fileUpLoadPic.PostedFile.FileName == "")  //文件名字
-            {
-                Response.Write("<script>alert('你还没有选择图片！')</script>");
-            }
-            else {
                 string filepath = fileUpLoadPic.PostedFile.FileName;
                 string filename = filepath.Substring(filepath.LastIndexOf("\\") + 1);//第一个\转义字符
                 Session["filename"] = filename;
@@ -84,9 +74,9 @@ namespace second_hand.UI
                 string serverpath = Server.MapPath(".") + "//Uploads//" + filename;
                 if (fileEx == "jpg" || fileEx == "bmp" || fileEx == "gif")
                 {
-                    //String goodsID = Request.QueryString["goods_id"].ToString();
-                    //这句等蒋晓松的页面写完再取消注释
-                    String goodsID = "3";
+                    String goodsID = Request.QueryString["goods_id"].ToString();
+                    ////这句等蒋晓松的页面写完再取消注释
+                    //String goodsID = "3";
                     BLL.UpdateGoodBLL ugb = new BLL.UpdateGoodBLL();
                     String goodName = Request["title"];
                     String goodImg;
@@ -119,11 +109,34 @@ namespace second_hand.UI
                         Response.Write("<script>alert('修改失败，请重试！')</script>");
                     }
                 }
+            }
+            else {
+                String goodsID = Request.QueryString["goods_id"].ToString();
+                ////这句等蒋晓松的页面写完再取消注释
+                //String goodsID = "3";
+                BLL.UpdateGoodBLL ugb = new BLL.UpdateGoodBLL();
+                String goodName = Request["title"];
+                Double prize = Convert.ToDouble(Request["price"]);
+                String address = Request["address"];
+                //select控件获取的文字自带一个空格，需要去空格
+                String category = Request["type"].ToString().Trim();
+                int bargin;
+                if (RadioButton1.Checked)
+                    bargin = 1;
+                else
+                    bargin = 0;
+                String contact = Request["tel"];
+                String newLevel = Request["new_level"];
+                String detail = Request["detail"];
+                if (ugb.updateGoodNotPic(category, prize, bargin, contact,detail, newLevel, goodName, address, goodsID) == 1)
+                {
+                    Response.Write("<script>alert('成功修改商品信息！')</script>");
+                }
                 else
                 {
-                    Response.Write("<script>alert('商品图片格式有问题，请重新选择！')</script>");
+                    Response.Write("<script>alert('修改失败，请重试！')</script>");
                 }
-                
+
             }
             
         }

@@ -9,10 +9,23 @@ namespace second_hand.DAL
     {
         private static String selectByID = "select * from t_release where goods_id={0}";
         private static String updateSql = "update t_release set category = \"{0}\",prize={1},bargin={2},contact_info=\"{3}\",img=\"{4}\",description=\"{5}\",new_level=\"{6}\",goods_name=\"{7}\",address=\"{8}\" where goods_id={9}";
+        private static String updateSql1 = "update t_release set category = \"{0}\",prize={1},bargin={2},contact_info=\"{3}\",description=\"{4}\",new_level=\"{5}\",goods_name=\"{6}\",address=\"{7}\" where goods_id={8}";
         public int updateGood(String category,Double prize,int bargin,String contact,String img,String description,String new_level,String goodsName,String address,int goodID )
         {
             //调用数据库语句，更新商品信息,没写呢
             if (DatabaseTool.ExecSql(String.Format(updateSql,category,prize,bargin,contact,img,description,new_level,goodsName,address,goodID)))
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+        public int updateGoodNotPic(String category, Double prize, int bargin, String contact,String description, String new_level, String goodsName, String address, int goodID)
+        {
+            //调用数据库语句，更新商品信息,没写呢
+            if (DatabaseTool.ExecSql(String.Format(updateSql1, category, prize, bargin, contact, description, new_level, goodsName, address, goodID)))
             {
                 return 1;
             }
